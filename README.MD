@@ -15,7 +15,7 @@
         3.上传关键字
             将所有关键字放到'keyword.txt'里,不能有特殊字符,编码为:utf-8
         4.根据tf-idf算法,将最匹配关键的文章进行排序
-            运行'9_tf-idf.py',排序结果保存在:'tf_idf_data.json'
+            运行'9_tf-idf.py',排序结果将保存在:'tf_idf_data.json'
         5.清理缓存
             删除'cache'文件夹里所有文件
         6.设置主页,分类页,详情页数据,缓存及其他
@@ -24,7 +24,6 @@
             pip install fastapi
             pip install uvicorn
             pip install jinja2
-            pip install fastapi
         8.运行程序
             main.py
 
