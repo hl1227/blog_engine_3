@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{data.category}}</title>
+</head>
+<body>
+host:{{data.host}}
+time:{{ data.time }}
+<div>
+    <p>分类页面包屑:</p>
+    <p>
+        <a href="/">首页</a>
+        -
+        <a href="">{{ data.category }}</a>
+    </p>
+</div>
+<p>分类页分类:</p>
+<ul>
+    {% for category in data.category_list %}
+    <li>
+        <a href="/{{category | replace(' ','-')}}">{{ category }}</a>
+    </li>
+    {% endfor %}
+</ul>
+分类页数据:
+<ul>
+    {% for category_data in data.category_data_list %}
+    <li>
+        <a href="/{{ data.category | replace(' ','-') }}/{{category_data.title | replace(' ','-')}}">{{ category_data.title }}</a>
+        <p>描述:{{category_data.description}}...</p>
+        <p>关键字:{{data.category}}</p>
+        <span>作者:{{data.author}}</span>
+        <span>发布日期:{{data.time}}</span>
+        <p><img src='{{category_data.img_src}}' alt=""></p>
+    </li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>

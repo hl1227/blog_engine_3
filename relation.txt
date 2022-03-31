@@ -1,0 +1,9 @@
+{
+"Japan":"Tokyo,Japanese,Nagoya",
+"President":"Vladimir Putin,Joe Biden,Rodrigo Duterte,Minister Scott",
+"Australia":"Sydney,Minister Scott",
+"America":"White House,Joe Biden,Washington,Americans",
+"news":"black box,COVID,records,stocks,reports,Oscars,photo,video,soldiers",
+"Europe":"Russian,Ukraine,Russia",
+"Russia":"Vladimir Putin"
+}

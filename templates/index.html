@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+host:{{data.host}}
+time:{{ data.time }}
+<p>主页分类字段:</p>
+<ul>
+    {% for category in data.category_list %}
+    <li>
+        <a href="/{{category | replace(' ','-')}}">
+            {{ category }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+<ul>
+    内容:
+    {% for index_data in data.index_data_list %}
+    <li>
+        <a href="/{{  data.category_list | random | replace(' ','-')}}/{{index_data.title | replace(' ','-')}}">{{ index_data.title }}</a>
+        <p>描述:{{index_data.description}}...</p>
+        <p>关键字:{{data.category_list | random}}</p>
+        <span>作者:{{index_data.author}}</span>
+        <span>发布日期:{{ data.time }}</span>
+        <p><img src='{{index_data.img_src}}' alt=""></p>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

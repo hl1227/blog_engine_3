@@ -1,0 +1,42 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>404-the page you are looking for not avaible</title>
+    <link rel="canonical" href="#">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  </head>
+  <body>
+    <h2>Oops, you broke the internet</h2>
+	<p>Just kidding. But it seems Robo, your personal robot, can't find the page you're looking for. Please make sure you've entered the correct address.</p>
+    <p>请求路径:{{ data.request_path }}</p>
+    host:{{ data.host }}
+
+
+    <ul>
+    1.随机分类:
+        {% for category in data.category_list %}
+        <li>
+            <a href="/{{ category.category  | replace(' ','-')}}">{{ category.category }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    2.随机数据的文本:
+    <ul>
+        {% for random_content in data.random_content_list %}
+            <p>{{ random_content.content }}</p>
+        {% endfor %}
+    </ul>
+    3.随机数据:
+    {% for random_data in data.random_info_data_list %}
+        <a href="/{{ random_data.category | replace(' ','-') }}/{{ random_data.source }}">
+            <p>{{ random_data.title }}</p></a>
+            <p>{{ random_data.keyword }}</p>
+            <p>{{random_data.author}}{{ random_data.create_time }}</p>
+            <p>{{random_data.description }}</p>
+            <p><img src="{{ random_data.img_src }}" alt=""></p>
+    {% endfor %}
+  </body>
+</html>

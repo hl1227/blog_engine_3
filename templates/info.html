@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="{{data.category}}">
+    <link rel="canonical" href="https://{{data.host}}/{{data.category | replace(' ','-')}}/{{data.info_data.title}}" />
+    <title>{{data.info_data.title}}</title>
+</head>
+
+<body>
+{% autoescape false %}
+host:{{data.host}}
+
+<div>
+    <p>详情页面包屑:-----------------------------------------------------------------------</p>
+    <p>
+        <a href="/">home</a>
+        -
+        <a href="/{{data.category | replace(' ','-')}}">{{ data.category }}</a>
+        -
+        <a href="">{{data.info_data.title}}</a>
+    </p>
+</div>
+
+分类:-----------------------------------------------------------------------
+<ul>
+    {% for category in data.category_list %}
+    <li>
+        <a href="/{{category | replace(' ','-')}}"><p>{{category}}</p></a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+详情数据:-----------------------------------------------------------------------
+<div escape="false">
+
+    <p>title:{{data.info_data.title}}</p>
+    <p>category:{{data.category}}</p>
+    <p>time:{{data.time}}</p>
+    <p>content:{{data.info_data.content}}</p>
+</div>
+
+
+详情页其他数据---------------------------------------------------------------------
+{% for other_data in data.other_info_data_list %}
+    <a href="/{{ data.category | replace(' ','-') }}/{{ other_data.title | replace(' ','-') }}">
+        <p>{{other_data.title}}</p>
+    </a>
+    <p>{{data.category}}</p>
+    <p>{{data.time}}</p>
+    <p>{{other_data.description}}</p>
+    <p><img src="{{ other_data.img_src }}" alt=""></p>
+{% endfor %}
+
+
+{% endautoescape %}
+</body>
+</html>
