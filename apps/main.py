@@ -39,11 +39,14 @@ def sitemap(request:Request):
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'''
+    res_1 += '<url><loc>{}</loc >'.format(domain)
+    res_1 += '<lastmod>{}</lastmod>'.format(date.strftime("%Y-%m-%d")) + '<changefreq>always</changefreq>' + '<priority>1.0</priority></url>'
+    for f_category in f_category_list:
+        res_1 += '<url><loc>{}</loc>'.format(domain+f_category.replace(' ', '-'))
+        res_1 += '<lastmod>{}</lastmod>'.format(date.strftime("%Y-%m-%d"))+'<changefreq>always</changefreq>'+'<priority>1.0</priority></url>'
     for f_title in f_title_list[:config.SITEMAP_COUNT]:
-        res_1 += '<url><loc>{}</loc >'.format(domain + random.choice(f_category_list).replace(' ','-')+'/'+f_title.replace(' ','-').replace('.txt',''))
-        res_1 += '<lastmod>{}</lastmod>'.format(date.strftime("%Y-%m-%d"))
-        res_1 += '<changefreq>always</changefreq>'
-        res_1 += '<priority>1.0</priority></url>'
+        res_1 += '<url><loc>{}</loc>'.format(domain + random.choice(f_category_list).replace(' ','-')+'/'+f_title.replace(' ','-').replace('.txt',''))
+        res_1 += '<lastmod>{}</lastmod>'.format(date.strftime("%Y-%m-%d"))+'<changefreq>always</changefreq>'+'<priority>1.0</priority></url>'
     res_1 += '</urlset>'
     return Response(content=res_1, media_type='application/xml')
 '------------------------------------------------------------------------'
