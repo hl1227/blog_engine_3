@@ -14,17 +14,19 @@
             上传文件后,运行'alter_TxtName.py',将修复文件名特殊符号
         3.上传关键字
             将所有关键字放到'keyword.txt'里,不能有特殊字符,编码为:utf-8
-        4.根据tf-idf算法,将最匹配关键的文章进行排序
+        4.上传关键字关联
+            将关键字关联数据按照指定格式编写在'relation.txt',内容全部为小写,编码为:utf-8
+        5.根据tf-idf算法,将最匹配关键的文章进行排序
             运行'9_tf-idf.py',排序结果将保存在:'tf_idf_data.json'
-        5.清理缓存
+        6.清理缓存
             删除'cache'文件夹里所有文件
-        6.设置主页,分类页,详情页数据,缓存及其他
+        7.设置主页,分类页,详情页数据,缓存及其他
             在'config.py'里设置
-        7.搭建环境
+        8.搭建环境
             pip install fastapi
             pip install uvicorn
             pip install jinja2
-        8.运行程序
+        9.运行程序
             main.py
 
 ## 3.模板数据

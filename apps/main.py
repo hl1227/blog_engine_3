@@ -1,5 +1,5 @@
-from fastapi import APIRouter,Depends,Request,Response
-from fastapi.responses import RedirectResponse,HTMLResponse
+from fastapi import APIRouter,Request,Response
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import config,datetime,os,random,json
 
