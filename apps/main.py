@@ -113,10 +113,12 @@ def __CategoryResponse__(request,category,host):
     # 内容数据
     category_data_list = []
     for txt_name in f_tf_idf_dict[category][:config.CATEGORY_DATA_COUNT]:
-        data_dict = {'title': txt_name.replace('.txt', '')}
-        f_data = __open_file__(txt_name)
-        data_dict['description'] = f_data[0:config.DESCRIPTION]
-        category_data_list.append(data_dict)
+        try:
+            data_dict = {'title': txt_name.replace('.txt', '')}
+            f_data = __open_file__(txt_name)
+            data_dict['description'] = f_data[0:config.DESCRIPTION]
+            category_data_list.append(data_dict)
+        except Exception:pass
     # 返回模板
     category_res = templates.TemplateResponse(
         'category.html', {
