@@ -67,8 +67,7 @@ def index(request:Request):
             content = __open_file__(txt_name)
             data_dict['description'] = content[0:config.DESCRIPTION]
             index_data_list.append(data_dict)
-    except Exception:
-        pass
+    except Exception:pass
     return templates.TemplateResponse(
         'index.html', {
             "request": request,
@@ -156,14 +155,14 @@ def info(request:Request,category:str,title:str):
             random_title = random.choice(f_title_list)
             info_res = __InfoResponse__(request, random_category,random_title,host)
         if config.INFO_CACHE_ENABLED:# 存缓存
-            # try:
-            if not os.path.exists(info_f_path):
-                os.makedirs(info_f_path)
-            file_cache_category = open(f'{info_f_path}/{title.replace(".txt","")}.html', 'w+', encoding='utf-8')
-            file_cache_category.write(info_res.body.decode('utf-8'))
-            file_cache_category.close()
-            # except Exception as e:
-            #     print(f'缓存创建失败:{category}/{source},信息:{e}')
+            try:
+                if not os.path.exists(info_f_path):
+                    os.makedirs(info_f_path)
+                file_cache_category = open(f'{info_f_path}/{title.replace(".txt","")}.html', 'w+', encoding='utf-8')
+                file_cache_category.write(info_res.body.decode('utf-8'))
+                file_cache_category.close()
+            except Exception as e:
+                print(f'缓存创建失败:{info_f_path}/{title.replace(".txt","")}.html,信息:{e}')
         return info_res
 
 def __InfoResponse__(request,category:str,title:str,host):
